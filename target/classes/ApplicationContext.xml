@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                        http://www.springframework.org/schema/tx
+                        http://www.springframework.org/schema/tx/spring-tx.xsd">            
+<!--      加载所有的service，指定所在的包 -->
+	<context:component-scan base-package="com.liu.service"></context:component-scan>
+<!-- 	加载数据库属性 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="location" value="classpath:jdbc.properties"></property>
+	</bean>
+<!-- 	配置连接池，用dbcp连接池 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	    <property name="driverClassName" value="${driver}"></property>
+	    <property name="url" value="${url}"></property>
+	    <property name="username" value="${username}"></property>
+	    <property name="password" value="${password}"></property>
+        <!-- 连接池最大数量 -->
+        <property name="maxActive" value="${maxActive}"/>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle" value="${maxIdle}"/>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="${minIdle}"/>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="${maxWait}"/>
+	</bean>
+<!-- 	加载数据库会话工厂 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!-- 	    指定数据源 -->
+	    <property name="dataSource" ref="dataSource"></property>
+<!-- 	    <property name="configLocation" value="classpath:mybatis-config.xml"></property> -->
+<!-- 		指定mybatis mapper文件 -->
+	    <property name="mapperLocations" value="classpath:com/liu/mapper/*.xml"></property>
+	</bean>
+<!-- 	配置自动扫描dao包 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	    <property name="basePackage" value="com.liu.dao"></property>
+	    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+<!-- 	配置事物管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSource"></property>
+	</bean>
+<!-- 	配置shiro，用于登陆验证 -->
+<!-- 	注入自定义的realm -->
+	<bean id="myRealm" class="com.liu.Realm.myrealm"></bean>
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myRealm" />
+	</bean>
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+<!-- 	    安全管理者 -->
+	    <property name="securityManager" ref="securityManager" />
+<!-- 	    等行登陆的页面 -->
+	    <property name="loginUrl" value="/login.jsp"></property>
+<!-- 	    过滤链 -->
+	    <property name="filterChainDefinitions">
+	        <value>
+<!-- 	            anon代表不拦截的地址,authc代表拦截的地址，logout代表退出的路径 -->
+	            /login=anon
+	            /user/*=anon
+	            /register=anon
+	            /static/**=anon
+	           /**=authc
+	           /user/logout=logout
+	        </value>
+	    </property>
+	</bean>
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor">
+	</bean>
+	<bean class="org.apache.shiro.spring.LifecycleBeanPostProcessor" depends-on="lifecycleBeanPostProcessor"></bean>
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+	    <property name="securityManager" ref="securityManager"></property>
+	</bean>
+<!-- 	说明可以通过注解的方式配置事物 -->
+	  <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+	</beans>
+                         
