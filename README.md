@@ -58,3 +58,15 @@ message:后台提示内容,type:提示JSON，list:下棋的人数，以及观战
 ########################<br>
 登陆界面:
 ![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/login.png)
+聊天主界面:
+![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/index.png)
+个人信息界面：
+![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/info.png)
+系统日志界面：
+![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/log.png)
+个人设置界面:
+![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/setting.png)
+系统设置界面：
+![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/sysset.png)
+联机五子棋界面:
+![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/five_chess.png)
