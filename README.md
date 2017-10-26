@@ -65,7 +65,7 @@ message:后台提示内容,type:提示JSON，list:下棋的人数，以及观战
 系统日志界面：
 ![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/log.png)
 个人设置界面:
-![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/setting.png)
+![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/setting.pn)
 系统设置界面：
 ![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/sysset.png)
 联机五子棋界面:
