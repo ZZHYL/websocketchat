@@ -2,17 +2,17 @@
 一个用SSM以及WebSocket写的一个聊天室，其中还有联机五子棋以及AI五子棋<br>
 #################################<br>
 介绍:<br>
-  此项目利用`SpringMVC+mybatis+spring`编写的一个聊天室，聊天功能实现利用WebSocke。<br>
+  此项目利用`SpringMVC+mybatis+spring`编写的一个聊天室，聊天功能实现利用WebSocket。<br>
 #################################<br>
 所用技术：<br>
-  开发工具:eclipse<br>
-  项目管理：Maven<br>
-  使用语言：Java<br>
-  使用的框架：SpringMVC+mybatis+spring<br>
-  安全认证：shiro<br>
-  数据库：mysql<br>
-  前端采用：Amaze UI<br>
-  弹窗和分页:Layer<br>
+  开发工具:`eclipse`<br>
+  项目管理：`Maven`<br>
+  使用语言：`Java`<br>
+  使用的框架：`SpringMVC+mybatis+spring`<br>
+  安全认证：`shiro`<br>
+  数据库：`mysql`<br>
+  前端采用：`Amaze UI`<br>
+  弹窗和分页:`Layer`<br>
  #################################<br>
  前台与后台交互<br>
  前台与后台交互的JSON格式为：<br>
@@ -49,7 +49,7 @@ type:zuobiaoxy 标记这个JSON格式为棋子JSON<br>
 message:后台提示内容,type:提示JSON，list:下棋的人数，以及观战的人数。<br><br>
 #########################<br>
 实现的功能：<br>
-其中简要的功能有登陆、注册，与其他聊天，人工智聊天，资料查看以及查看别人资料，个人信息修改<br>
+其中简要的功能有使用shiro进行账号登陆、注册，与其他聊天，人工智聊天，资料查看以及查看别人资料，个人信息修改<br>
 头像上传，修改，密码修改，对日志查看，系统修改包括，日志分页大小，个人信息是否允许别人查看，<br>
 最后还有一个与别人对战的五子棋，可以让其他人进行观战，并且有可以自己与人机进行对战。<br>
 ########################<br>
