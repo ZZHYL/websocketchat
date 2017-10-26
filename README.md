@@ -55,4 +55,6 @@ message:后台提示内容,type:提示JSON，list:下棋的人数，以及观战
 ########################<br>
 使用方法：<br>
 导入项目，webpapp中有file中的sql文件，倒入此文件到数据库，修改resource文件的jdbc.properties,修改数据库账号密码，运行程序。<br>
-![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")  
+########################<br>
+登陆界面:
+![](https://github.com/SinceNovember/websockchat/tree/master/src/main/webapp/file/photo/login.png)
