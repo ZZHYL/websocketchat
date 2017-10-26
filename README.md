@@ -57,4 +57,4 @@ message:后台提示内容,type:提示JSON，list:下棋的人数，以及观战
 导入项目，webpapp中有file中的sql文件，倒入此文件到数据库，修改resource文件的jdbc.properties,修改数据库账号密码，运行程序。<br>
 ########################<br>
 登陆界面:
-![](https://github.com/SinceNovember/websockchat/tree/master/src/main/webapp/file/photo/login.png)
+![](https://github.com/SinceNovember/websockchat/blob/master/src/main/webapp/file/photo/five_chess.png)
